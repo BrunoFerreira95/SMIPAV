@@ -32,13 +32,12 @@
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">validate</property>
 
 		<!-- Mapeamento das Entidades -->
 		<mapping class="br.com.smipav.domain.Usuario"/>
 		
 		<mapping class="br.com.smipav.domain.Administrador"/>
 		
-		<mapping class="br.com.smipav.domain.Fornecedor"/>
 	</session-factory>
 </hibernate-configuration>

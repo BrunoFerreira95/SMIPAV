@@ -6,21 +6,31 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.smipav.dao.AdministradorDao;
+import br.com.smipav.dao.UsuarioDao;
 import br.com.smipav.domain.Administrador;
+import br.com.smipav.domain.Usuario;
 
 public class AdministradorDaoTest {
 
 	@Test
-	//@Ignore
+	@Ignore
 	public void salvar() {
 
-		Administrador administrador = new Administrador(
-				"brunofpedraca@gmail.com",
-				"root",
-				"Francisco Robles",
-				"123456789",
-				"1"
-		);
+		Usuario usuario = new Usuario();
+		
+		usuario.setEmail("brunoferreirapedraca@gmail.com");
+		usuario.setEndereco("Francisco Robles Antonio,4560");
+		usuario.setSenha("123456789");
+		usuario.setStatus("ativo");
+		usuario.setTelefone_celular("14998547777");
+		
+		UsuarioDao usuarioDao = new UsuarioDao();
+		
+		usuarioDao.salvar(usuario);
+		
+		Administrador administrador = new Administrador();
+		
+		administrador.setUsuario(usuario);
 
 		AdministradorDao administradorDao = new AdministradorDao();
 
@@ -30,7 +40,7 @@ public class AdministradorDaoTest {
 	}
 
 	@Test
-	//@Ignore
+	@Ignore
 	public void listar() {
 		
 		AdministradorDao administradorDao = new AdministradorDao();
@@ -40,19 +50,19 @@ public class AdministradorDaoTest {
 		System.out.println("Total de registro: " + resultado.size());
 		
 		for( Administrador administrador : resultado) {
-			System.out.println(administrador.getEmail());
+			System.out.println(administrador.getUsuario().getEmail());
 		}
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void buscar() {
 		
 		AdministradorDao administradorDao = new AdministradorDao();
 		
 		Administrador administrador = administradorDao.buscar(1L);
 		
-		System.out.println(administrador.getEmail());
+		System.out.println(administrador.getUsuario().getEmail());
 	}
 	
 	@Test
@@ -60,22 +70,30 @@ public class AdministradorDaoTest {
 	public void excluir() {
 		
 		AdministradorDao administradorDao = new AdministradorDao();
-		System.out.println("teste");
-		Administrador administrador = administradorDao.buscar(1L);
+		
+		Administrador administrador = administradorDao.buscar(2L);
 
 		if (administrador == null) {
 			System.out.println("Nenhum Registro encontrado");
 		}else {
+			UsuarioDao usuarioDao = new UsuarioDao();
+			
+			Usuario usuario = new Usuario();
+			
+			usuario = usuarioDao.buscar(administrador.getUsuario().getCodigo());
 			
 			administradorDao.excluir(administrador);
+			
+			usuarioDao.excluir(usuario);
+
 			System.out.println("Registro encontrado");
-			System.out.println(administrador.getEmail());
+			System.out.println("Registro Excluido");
 		}
 
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void editar() {
 		
 		AdministradorDao administradorDao = new AdministradorDao();
@@ -87,10 +105,21 @@ public class AdministradorDaoTest {
 			System.out.println("Nenhum Registro encontrado");
 			
 		}else {
-			administrador.setEmail("diegonovello@hotmail.com");;
-			administradorDao.editar(administrador);
+			UsuarioDao usuarioDao = new UsuarioDao();
+			
+			Usuario usuario = new Usuario();
+			
+			usuario = administrador.getUsuario();
+			
+			usuario.setEmail("diegoferreira92@gmail.com");
+			
+			usuarioDao.editar(usuario);
+			
 			System.out.println("Registro encontrado");
-			System.out.println(administrador.getEmail());
+			
+			System.out.println("Registro Editado");
+			
+			System.out.println(administrador.getUsuario().getEmail());
 		}
 
 	}

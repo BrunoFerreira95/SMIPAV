@@ -2,14 +2,17 @@ package br.com.smipav.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) 
-public abstract class Usuario extends GenericDomain{
-
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE) 
+public class Usuario extends GenericDomain{
+	
 	@Column(length = 50, nullable = false)
 	private String email;
 	
@@ -24,14 +27,6 @@ public abstract class Usuario extends GenericDomain{
 	
 	@Column(length = 50, nullable = false)
 	private String status;
-	
-	public Usuario(String email, String senha, String endereco, String telefone_celular, String status) {
-		this.email = email;
-		this.senha = senha;
-		this.endereco = endereco;
-		this.telefone_celular = telefone_celular;
-		this.status = status;
-	}
 
 	public String getEmail() {
 		return email;

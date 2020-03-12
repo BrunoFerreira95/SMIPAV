@@ -1,14 +1,22 @@
 package br.com.smipav.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Administrador extends Usuario{
+public class Administrador extends GenericDomain{
 	
-	public Administrador(String email, String senha, String endereco, String telefone_celular, String status) {
-		super(email, senha, endereco, telefone_celular, status);
-		// TODO Auto-generated constructor stub
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	Usuario usuario;
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }
