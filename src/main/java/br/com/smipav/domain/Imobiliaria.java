@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Imobiliaria {
+public class Imobiliaria extends GenericDomain{
 
 	@Column(length = 50, nullable = false)
 	private String nome_fantasia;
