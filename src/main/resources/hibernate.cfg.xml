@@ -39,5 +39,7 @@
 		
 		<mapping class="br.com.smipav.domain.Administrador"/>
 		
+		<mapping class="br.com.smipav.domain.Contato"/>
+		
 	</session-factory>
 </hibernate-configuration>

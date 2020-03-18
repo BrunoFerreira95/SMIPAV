@@ -16,17 +16,11 @@ public class AdministradorDaoTest {
 	@Ignore
 	public void salvar() {
 
-		Usuario usuario = new Usuario();
 		
-		usuario.setEmail("brunoferreirapedraca@gmail.com");
-		usuario.setEndereco("Francisco Robles Antonio,4560");
-		usuario.setSenha("123456789");
-		usuario.setStatus("ativo");
-		usuario.setTelefone_celular("14998547777");
 		
 		UsuarioDao usuarioDao = new UsuarioDao();
 		
-		usuarioDao.salvar(usuario);
+		Usuario usuario = usuarioDao.buscar(1L);
 		
 		Administrador administrador = new Administrador();
 		
@@ -71,7 +65,7 @@ public class AdministradorDaoTest {
 		
 		AdministradorDao administradorDao = new AdministradorDao();
 		
-		Administrador administrador = administradorDao.buscar(2L);
+		Administrador administrador = administradorDao.buscar(4L);
 
 		if (administrador == null) {
 			System.out.println("Nenhum Registro encontrado");
