@@ -65,7 +65,7 @@ public class AdministradorDaoTest {
 		
 		AdministradorDao administradorDao = new AdministradorDao();
 		
-		Administrador administrador = administradorDao.buscar(2L);
+		Administrador administrador = administradorDao.buscar(4L);
 
 		if (administrador == null) {
 			System.out.println("Nenhum Registro encontrado");

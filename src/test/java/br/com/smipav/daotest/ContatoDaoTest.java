@@ -72,7 +72,7 @@ public class ContatoDaoTest {
 	}
 
 	@Test
-	// @Ignore
+	@Ignore
 	public void excluir() {
 		ContatoDao contatoDao = new ContatoDao();
 
@@ -91,11 +91,11 @@ public class ContatoDaoTest {
 	}
 
 	@Test
-	@Ignore
+	//@Ignore
 	public void editar() {
 		ContatoDao contatoDao = new ContatoDao();
 
-		Contato contato = contatoDao.buscar(1L);
+		Contato contato = contatoDao.buscar(2L);
 
 		if (contato == null) {
 
@@ -103,7 +103,7 @@ public class ContatoDaoTest {
 
 		} else {
 
-			contato.getAssunto("Segunda Etapa");
+			contato.setAssunto("Segunda Etapa");
 
 			contatoDao.editar(contato);
 

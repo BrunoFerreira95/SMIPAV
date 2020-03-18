@@ -56,7 +56,7 @@ public class UsuarioDaoTest {
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void excluir() {
 		
 		UsuarioDao usuarioDao = new UsuarioDao();
@@ -76,7 +76,7 @@ public class UsuarioDaoTest {
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void editar() {
 		UsuarioDao usuarioDao = new UsuarioDao();
 		
